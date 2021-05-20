@@ -555,7 +555,7 @@ let genShips = () => {
   paintGrid();
 };
 
-let lookForShips = () => {
+let checkShips = () => {
   let vertical4ships = 0;
   let horizontal4ships = 0;
 
@@ -794,3 +794,6 @@ for (casilla of gridP1) {
     document.querySelector(`#${e.path[0].id}`).classList.toggle('gray');
   });
 }
+
+document.querySelector('#checkShips').addEventListener('click', checkShips);
+document.querySelector('#genShips').addEventListener('click', genShips);

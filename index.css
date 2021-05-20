@@ -5,8 +5,7 @@
 }
 
 .grid {
-  display: flex;
-  flex-direction: column;
+  margin: 20px;
 }
 
 .row {
@@ -21,4 +20,8 @@
 
 .red {
   background-color: red;
+}
+
+.gray {
+  background-color: gray;
 }

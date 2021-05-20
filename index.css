@@ -16,6 +16,9 @@
   width: 40px;
   height: 40px;
   border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .red {

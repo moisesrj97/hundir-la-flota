@@ -552,7 +552,7 @@ let genShips = () => {
   genOneShip(1);
   genOneShip(1);
 
-  paintGrid();
+  alert('Enemy ships generated');
 };
 
 let checkShips = () => {
@@ -792,6 +792,18 @@ let checkShips = () => {
 for (casilla of gridP1) {
   casilla.element.addEventListener('click', (e) => {
     document.querySelector(`#${e.path[0].id}`).classList.toggle('gray');
+  });
+}
+
+for (casilla of grid) {
+  casilla.element.addEventListener('click', (e) => {
+    let div = grid.find((x) => x.element == e.path[0]);
+    console.log(div);
+    if (div.ship == true) {
+      div.element.innerHTML = '&#128293;';
+    } else {
+      div.element.innerHTML = '&#128031;';
+    }
   });
 }
 

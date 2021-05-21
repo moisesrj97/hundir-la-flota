@@ -1,3 +1,13 @@
+body {
+  background-image: url('https://i.pinimg.com/originals/b1/3b/dd/b13bdd058119af1ec0159b499560bcc3.jpg');
+  background-position: center;
+  background-size: fit;
+}
+
+span {
+  font-size: 30px;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -15,7 +25,7 @@
 .casilla {
   width: 40px;
   height: 40px;
-  border: 1px solid black;
+  border: 1px solid whitesmoke;
   display: flex;
   justify-content: center;
   align-items: center;

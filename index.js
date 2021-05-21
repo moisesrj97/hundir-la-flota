@@ -910,9 +910,12 @@ for (casilla of grid) {
     let div = grid.find((x) => x.element == e.path[0]);
     console.log(div);
     if (div.ship == true) {
-      div.element.innerHTML = '&#128293;';
+      div.element.innerHTML = '<span>&#128293;</span>';
+      div.touched = true;
+      // alert('Tocado!');
     } else {
-      div.element.innerHTML = '&#128031;';
+      div.element.innerHTML = '<span>&#128031;</span>';
+      // alert('Agua!');
     }
   });
 }

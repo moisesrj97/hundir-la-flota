@@ -565,208 +565,318 @@ let checkShips = () => {
   let horizontal2ships = 0;
   let oneShips = 0;
 
-  //Buscar barcos de 4 verticales
-  for (let j = 0; j < 10; j++) {
-    for (let i = 3 + j * 10; i < 10 + j * 10; i++) {
+  //Buscar barcos de 4 verticales (mod)
+  for (casilla of gridP1) {
+    let col = casilla.col;
+    let row = casilla.row;
+
+    if (
+      document.querySelector(`#col${col}row${row}p1`).classList.contains('gray') &&
+      document.querySelector(`#col${col}row${row - 1}p1`) &&
+      document.querySelector(`#col${col}row${row - 1}p1`).classList.contains('gray') &&
+      document.querySelector(`#col${col}row${row - 2}p1`) &&
+      document.querySelector(`#col${col}row${row - 2}p1`).classList.contains('gray') &&
+      document.querySelector(`#col${col}row${row - 3}p1`) &&
+      document.querySelector(`#col${col}row${row - 3}p1`).classList.contains('gray')
+    ) {
+      console.log(casilla.element);
+      console.log('4 ship vertical found with modificated function');
       if (
-        gridP1[i].element.classList.contains('gray') &&
-        gridP1[i - 1].element.classList.contains('gray') &&
-        gridP1[i - 2].element.classList.contains('gray') &&
-        gridP1[i - 3].element.classList.contains('gray')
+        (!document.querySelector(`#col${col}row${row - 4}p1`) ||
+          !document.querySelector(`#col${col}row${row - 4}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row - 4}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row - 4}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row - 4}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row - 4}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row - 3}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row - 3}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row - 3}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row - 3}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row - 2}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row - 2}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row - 2}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row - 2}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col}row${row + 1}p1`).classList.contains('gray'))
       ) {
-        console.log('Vertical 4 ship found');
-        if (
-          (!gridP1[i + 1] || !gridP1[i + 1].element.classList.contains('gray')) &&
-          (!gridP1[i - 4] || !gridP1[i - 4].element.classList.contains('gray')) &&
-          (!gridP1[i + 6] || !gridP1[i + 6].element.classList.contains('gray')) &&
-          (!gridP1[i + 7] || !gridP1[i + 7].element.classList.contains('gray')) &&
-          (!gridP1[i + 8] || !gridP1[i + 8].element.classList.contains('gray')) &&
-          (!gridP1[i + 9] || !gridP1[i + 9].element.classList.contains('gray')) &&
-          (!gridP1[i + 10] || !gridP1[i + 10].element.classList.contains('gray')) &&
-          (!gridP1[i + 11] || !gridP1[i + 11].element.classList.contains('gray')) &&
-          (!gridP1[i - 9] || !gridP1[i - 9].element.classList.contains('gray')) &&
-          (!gridP1[i - 10] || !gridP1[i - 10].element.classList.contains('gray')) &&
-          (!gridP1[i - 11] || !gridP1[i - 11].element.classList.contains('gray')) &&
-          (!gridP1[i - 12] || !gridP1[i - 12].element.classList.contains('gray')) &&
-          (!gridP1[i - 13] || !gridP1[i - 13].element.classList.contains('gray')) &&
-          (!gridP1[i - 14] || !gridP1[i - 14].element.classList.contains('gray'))
-        ) {
-          vertical4ships++;
-        } else {
-          console.log('Invalid vertical 4 ship');
-        }
+        console.log('4 ship vertical validated with modificated funtion');
+        vertical4ships++;
       }
     }
   }
-  //Buscar barcos de 4 horizontales
-  for (let j = 0; j < 10; j++) {
-    for (let i = 30 + j * 1; i < 91 + j * 1; i += 10) {
+
+  //Buscar barcos de 4 horizontales (mod)
+  for (casilla of gridP1) {
+    let col = casilla.col;
+    let row = casilla.row;
+
+    if (
+      document.querySelector(`#col${col}row${row}p1`).classList.contains('gray') &&
+      document.querySelector(`#col${col - 1}row${row}p1`) &&
+      document.querySelector(`#col${col - 1}row${row}p1`).classList.contains('gray') &&
+      document.querySelector(`#col${col - 2}row${row}p1`) &&
+      document.querySelector(`#col${col - 2}row${row}p1`).classList.contains('gray') &&
+      document.querySelector(`#col${col - 3}row${row}p1`) &&
+      document.querySelector(`#col${col - 3}row${row}p1`).classList.contains('gray')
+    ) {
+      console.log(casilla.element);
+      console.log('4 ship horizontal found with modificated function');
       if (
-        gridP1[i].element.classList.contains('gray') &&
-        gridP1[i - 10].element.classList.contains('gray') &&
-        gridP1[i - 20].element.classList.contains('gray') &&
-        gridP1[i - 30].element.classList.contains('gray')
+        (!document.querySelector(`#col${col - 4}row${row}p1`) ||
+          !document.querySelector(`#col${col - 4}row${row}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 4}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col - 4}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 4}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col - 4}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 3}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col - 3}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 3}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col - 3}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 2}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col - 2}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 2}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col - 2}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row}p1`).classList.contains('gray'))
       ) {
-        console.log('Horizontal 4 ship');
-        if (
-          (!gridP1[i + 10] || !gridP1[i + 10].element.classList.contains('gray')) &&
-          (!gridP1[i - 40] || !gridP1[i - 40].element.classList.contains('gray')) &&
-          (!gridP1[i - 1] || !gridP1[i - 1].element.classList.contains('gray')) &&
-          (!gridP1[i + 1] || !gridP1[i + 1].element.classList.contains('gray')) &&
-          (!gridP1[i + 11] || !gridP1[i + 11].element.classList.contains('gray')) &&
-          (!gridP1[i + 9] || !gridP1[i + 9].element.classList.contains('gray')) &&
-          (!gridP1[i - 9] || !gridP1[i - 9].element.classList.contains('gray')) &&
-          (!gridP1[i - 11] || !gridP1[i - 11].element.classList.contains('gray')) &&
-          (!gridP1[i - 19] || !gridP1[i - 19].element.classList.contains('gray')) &&
-          (!gridP1[i - 21] || !gridP1[i - 21].element.classList.contains('gray')) &&
-          (!gridP1[i - 29] || !gridP1[i - 29].element.classList.contains('gray')) &&
-          (!gridP1[i - 31] || !gridP1[i - 31].element.classList.contains('gray')) &&
-          (!gridP1[i - 39] || !gridP1[i - 39].element.classList.contains('gray')) &&
-          (!gridP1[i - 41] || !gridP1[i - 41].element.classList.contains('gray'))
-        ) {
-          horizontal4ships++;
-        } else {
-          console.log('Invalid horizontal 4 ship');
-        }
+        console.log('4 ship horizontal validated with modificated funtion');
+        horizontal4ships++;
       }
     }
   }
+
   //Buscar barcos de 3 verticales
-  for (let j = 0; j < 10; j++) {
-    for (let i = 2 + j * 10; i < 10 + j * 10; i++) {
+  for (casilla of gridP1) {
+    let col = casilla.col;
+    let row = casilla.row;
+
+    if (
+      document.querySelector(`#col${col}row${row}p1`).classList.contains('gray') &&
+      document.querySelector(`#col${col}row${row - 1}p1`) &&
+      document.querySelector(`#col${col}row${row - 1}p1`).classList.contains('gray') &&
+      document.querySelector(`#col${col}row${row - 2}p1`) &&
+      document.querySelector(`#col${col}row${row - 2}p1`).classList.contains('gray') &&
+      (!document.querySelector(`#col${col}row${row - 3}p1`) ||
+        !document.querySelector(`#col${col}row${row - 3}p1`).classList.contains('gray')) &&
+      (!document.querySelector(`#col${col}row${row + 1}p1`) ||
+        !document.querySelector(`#col${col}row${row + 1}p1`).classList.contains('gray'))
+    ) {
+      console.log(casilla.element);
+      console.log('3 ship vertical found with modificated function');
       if (
-        gridP1[i].element.classList.contains('gray') &&
-        gridP1[i - 1].element.classList.contains('gray') &&
-        gridP1[i - 2].element.classList.contains('gray') &&
-        (!gridP1[i - 3] || !gridP1[i - 3].element.classList.contains('gray')) &&
-        (!gridP1[i + 1] || !gridP1[i + 1].element.classList.contains('gray'))
+        (!document.querySelector(`#col${col}row${row - 3}p1`) ||
+          !document.querySelector(`#col${col}row${row - 3}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row - 3}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row - 3}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row - 3}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row - 3}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row - 2}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row - 2}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row - 2}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row - 2}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col}row${row + 1}p1`).classList.contains('gray'))
       ) {
-        console.log('Vertical 3 ship');
-        if (
-          (!gridP1[i + 1] || !gridP1[i + 1].element.classList.contains('gray')) &&
-          (!gridP1[i - 3] || !gridP1[i - 3].element.classList.contains('gray')) &&
-          (!gridP1[i + 7] || !gridP1[i + 7].element.classList.contains('gray')) &&
-          (!gridP1[i + 8] || !gridP1[i + 8].element.classList.contains('gray')) &&
-          (!gridP1[i + 9] || !gridP1[i + 9].element.classList.contains('gray')) &&
-          (!gridP1[i + 10] || !gridP1[i + 10].element.classList.contains('gray')) &&
-          (!gridP1[i + 11] || !gridP1[i + 11].element.classList.contains('gray')) &&
-          (!gridP1[i - 9] || !gridP1[i - 9].element.classList.contains('gray')) &&
-          (!gridP1[i - 10] || !gridP1[i - 10].element.classList.contains('gray')) &&
-          (!gridP1[i - 11] || !gridP1[i - 11].element.classList.contains('gray')) &&
-          (!gridP1[i - 12] || !gridP1[i - 12].element.classList.contains('gray')) &&
-          (!gridP1[i - 13] || !gridP1[i - 13].element.classList.contains('gray'))
-        ) {
-          vertical3ships++;
-        } else {
-          console.log('Invalid vertical 3 ship');
-        }
+        console.log('3 ship vertical validated with modificated funtion');
+        vertical3ships++;
       }
     }
   }
   //Buscar barcos de 3 horizontales
-  for (let j = 0; j < 10; j++) {
-    for (let i = 20 + j * 1; i < 91 + j * 1; i += 10) {
+  for (casilla of gridP1) {
+    let col = casilla.col;
+    let row = casilla.row;
+
+    if (
+      document.querySelector(`#col${col}row${row}p1`).classList.contains('gray') &&
+      document.querySelector(`#col${col - 1}row${row}p1`) &&
+      document.querySelector(`#col${col - 1}row${row}p1`).classList.contains('gray') &&
+      document.querySelector(`#col${col - 2}row${row}p1`) &&
+      document.querySelector(`#col${col - 2}row${row}p1`).classList.contains('gray') &&
+      (!document.querySelector(`#col${col - 3}row${row}p1`) ||
+        !document.querySelector(`#col${col - 3}row${row}p1`).classList.contains('gray')) &&
+      (!document.querySelector(`#col${col + 1}row${row}p1`) ||
+        !document.querySelector(`#col${col + 1}row${row}p1`).classList.contains('gray'))
+    ) {
+      console.log(casilla.element);
+      console.log('3 ship horizontal found with modificated function');
       if (
-        gridP1[i].element.classList.contains('gray') &&
-        gridP1[i - 10].element.classList.contains('gray') &&
-        gridP1[i - 20].element.classList.contains('gray') &&
-        (!gridP1[i - 30] || !gridP1[i - 30].element.classList.contains('gray')) &&
-        (!gridP1[i + 10] || !gridP1[i + 10].element.classList.contains('gray'))
+        (!document.querySelector(`#col${col - 3}row${row}p1`) ||
+          !document.querySelector(`#col${col - 3}row${row}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 3}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col - 3}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 3}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col - 3}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 2}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col - 2}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 2}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col - 2}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row}p1`).classList.contains('gray'))
       ) {
-        console.log('Horizontal 3 ship');
-        if (
-          (!gridP1[i + 10] || !gridP1[i + 10].element.classList.contains('gray')) &&
-          (!gridP1[i - 30] || !gridP1[i - 30].element.classList.contains('gray')) &&
-          (!gridP1[i - 1] || !gridP1[i - 1].element.classList.contains('gray')) &&
-          (!gridP1[i + 1] || !gridP1[i + 1].element.classList.contains('gray')) &&
-          (!gridP1[i + 11] || !gridP1[i + 11].element.classList.contains('gray')) &&
-          (!gridP1[i + 9] || !gridP1[i + 9].element.classList.contains('gray')) &&
-          (!gridP1[i - 9] || !gridP1[i - 9].element.classList.contains('gray')) &&
-          (!gridP1[i - 11] || !gridP1[i - 11].element.classList.contains('gray')) &&
-          (!gridP1[i - 19] || !gridP1[i - 19].element.classList.contains('gray')) &&
-          (!gridP1[i - 21] || !gridP1[i - 21].element.classList.contains('gray')) &&
-          (!gridP1[i - 29] || !gridP1[i - 29].element.classList.contains('gray')) &&
-          (!gridP1[i - 31] || !gridP1[i - 31].element.classList.contains('gray'))
-        ) {
-          horizontal3ships++;
-        } else {
-          console.log('Invalid horizontal 3 ship');
-        }
+        console.log('3 ship horizontal validated with modificated funtion');
+        horizontal3ships++;
       }
     }
   }
   //Buscar barcos de 2 verticales
-  for (let j = 0; j < 10; j++) {
-    for (let i = 1 + j * 10; i < 10 + j * 10; i++) {
+  for (casilla of gridP1) {
+    let col = casilla.col;
+    let row = casilla.row;
+
+    if (
+      document.querySelector(`#col${col}row${row}p1`).classList.contains('gray') &&
+      document.querySelector(`#col${col}row${row - 1}p1`) &&
+      document.querySelector(`#col${col}row${row - 1}p1`).classList.contains('gray') &&
+      (!document.querySelector(`#col${col}row${row - 2}p1`) ||
+        !document.querySelector(`#col${col}row${row - 2}p1`).classList.contains('gray')) &&
+      (!document.querySelector(`#col${col}row${row + 1}p1`) ||
+        !document.querySelector(`#col${col}row${row + 1}p1`).classList.contains('gray'))
+    ) {
+      console.log(casilla.element);
+      console.log('2 ship vertical found with modificated function');
       if (
-        gridP1[i].element.classList.contains('gray') &&
-        gridP1[i - 1].element.classList.contains('gray') &&
-        (!gridP1[i - 2] || !gridP1[i - 2].element.classList.contains('gray')) &&
-        (!gridP1[i + 1] || !gridP1[i + 1].element.classList.contains('gray'))
+        (!document.querySelector(`#col${col}row${row - 2}p1`) ||
+          !document.querySelector(`#col${col}row${row - 2}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row - 2}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row - 2}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row - 2}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row - 2}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col}row${row + 1}p1`).classList.contains('gray'))
       ) {
-        console.log('Vertical 2 ship');
-        if (
-          (!gridP1[i + 1] || !gridP1[i + 1].element.classList.contains('gray')) &&
-          (!gridP1[i - 2] || !gridP1[i - 2].element.classList.contains('gray')) &&
-          (!gridP1[i + 7] || !gridP1[i + 7].element.classList.contains('gray')) &&
-          (!gridP1[i + 8] || !gridP1[i + 8].element.classList.contains('gray')) &&
-          (!gridP1[i + 9] || !gridP1[i + 9].element.classList.contains('gray')) &&
-          (!gridP1[i + 10] || !gridP1[i + 10].element.classList.contains('gray')) &&
-          (!gridP1[i - 9] || !gridP1[i - 9].element.classList.contains('gray')) &&
-          (!gridP1[i - 10] || !gridP1[i - 10].element.classList.contains('gray')) &&
-          (!gridP1[i - 11] || !gridP1[i - 11].element.classList.contains('gray')) &&
-          (!gridP1[i - 12] || !gridP1[i - 12].element.classList.contains('gray'))
-        ) {
-          vertical2ships++;
-        } else {
-          console.log('Invalid vertical 2 ship');
-        }
+        console.log('2 ship vertical validated with modificated funtion');
+        vertical2ships++;
       }
     }
   }
   //Buscar barcos de 2 horizontales
-  for (let j = 0; j < 10; j++) {
-    for (let i = 10 + j * 1; i < 91 + j * 1; i += 10) {
+  for (casilla of gridP1) {
+    let col = casilla.col;
+    let row = casilla.row;
+
+    if (
+      document.querySelector(`#col${col}row${row}p1`).classList.contains('gray') &&
+      document.querySelector(`#col${col - 1}row${row}p1`) &&
+      document.querySelector(`#col${col - 1}row${row}p1`).classList.contains('gray') &&
+      (!document.querySelector(`#col${col - 2}row${row}p1`) ||
+        !document.querySelector(`#col${col - 2}row${row}p1`).classList.contains('gray')) &&
+      (!document.querySelector(`#col${col + 1}row${row}p1`) ||
+        !document.querySelector(`#col${col + 1}row${row}p1`).classList.contains('gray'))
+    ) {
+      console.log(casilla.element);
+      console.log('2 ship horizontal found with modificated function');
       if (
-        gridP1[i].element.classList.contains('gray') &&
-        gridP1[i - 10].element.classList.contains('gray') &&
-        (!gridP1[i - 20] || !gridP1[i - 20].element.classList.contains('gray')) &&
-        (!gridP1[i + 10] || !gridP1[i + 10].element.classList.contains('gray'))
+        (!document.querySelector(`#col${col - 2}row${row}p1`) ||
+          !document.querySelector(`#col${col - 2}row${row}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 2}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col - 2}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 2}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col - 2}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col}row${row - 1}p1`) ||
+          !document.querySelector(`#col${col}row${row - 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col - 1}row${row + 1}p1`) ||
+          !document.querySelector(`#col${col - 1}row${row + 1}p1`).classList.contains('gray')) &&
+        (!document.querySelector(`#col${col + 1}row${row}p1`) ||
+          !document.querySelector(`#col${col + 1}row${row}p1`).classList.contains('gray'))
       ) {
-        console.log('Horizontal 2 ship');
-        if (
-          (!gridP1[i + 10] || !gridP1[i + 10].element.classList.contains('gray')) &&
-          (!gridP1[i - 20] || !gridP1[i - 20].element.classList.contains('gray')) &&
-          (!gridP1[i - 1] || !gridP1[i - 1].element.classList.contains('gray')) &&
-          (!gridP1[i + 1] || !gridP1[i + 1].element.classList.contains('gray')) &&
-          (!gridP1[i + 11] || !gridP1[i + 11].element.classList.contains('gray')) &&
-          (!gridP1[i + 9] || !gridP1[i + 9].element.classList.contains('gray')) &&
-          (!gridP1[i - 9] || !gridP1[i - 9].element.classList.contains('gray')) &&
-          (!gridP1[i - 11] || !gridP1[i - 11].element.classList.contains('gray')) &&
-          (!gridP1[i - 19] || !gridP1[i - 19].element.classList.contains('gray')) &&
-          (!gridP1[i - 21] || !gridP1[i - 21].element.classList.contains('gray'))
-        ) {
-          horizontal2ships++;
-        } else {
-          console.log('Invalid horizontal 2 ship');
-        }
+        console.log('2 ship horizontal validated with modificated funtion');
+        horizontal2ships++;
       }
     }
   }
   //Buscar barcos de 1
-  for (let i = 0; i < 100; i++) {
+  for (casilla of gridP1) {
+    let col = casilla.col;
+    let row = casilla.row;
     if (
-      gridP1[i].element.classList.contains('gray') &&
-      (!gridP1[i - 1] || !gridP1[i - 1].element.classList.contains('gray')) &&
-      (!gridP1[i + 1] || !gridP1[i + 1].element.classList.contains('gray')) &&
-      (!gridP1[i + 10] || !gridP1[i + 10].element.classList.contains('gray')) &&
-      (!gridP1[i - 10] || !gridP1[i - 10].element.classList.contains('gray')) &&
-      (!gridP1[i + 9] || !gridP1[i + 9].element.classList.contains('gray')) &&
-      (!gridP1[i + 11] || !gridP1[i + 11].element.classList.contains('gray')) &&
-      (!gridP1[i - 9] || !gridP1[i - 9].element.classList.contains('gray')) &&
-      (!gridP1[i - 11] || !gridP1[i - 11].element.classList.contains('gray'))
+      document.querySelector(`#col${col}row${row}p1`).classList.contains('gray') &&
+      (!document.querySelector(`#col${col - 1}row${row}p1`) ||
+        !document.querySelector(`#col${col - 1}row${row}p1`).classList.contains('gray')) &&
+      (!document.querySelector(`#col${col - 1}row${row + 1}p1`) ||
+        !document.querySelector(`#col${col - 1}row${row + 1}p1`).classList.contains('gray')) &&
+      (!document.querySelector(`#col${col - 1}row${row - 1}p1`) ||
+        !document.querySelector(`#col${col - 1}row${row - 1}p1`).classList.contains('gray')) &&
+      (!document.querySelector(`#col${col}row${row + 1}p1`) ||
+        !document.querySelector(`#col${col}row${row + 1}p1`).classList.contains('gray')) &&
+      (!document.querySelector(`#col${col}row${row - 1}p1`) ||
+        !document.querySelector(`#col${col}row${row - 1}p1`).classList.contains('gray')) &&
+      (!document.querySelector(`#col${col + 1}row${row + 1}p1`) ||
+        !document.querySelector(`#col${col + 1}row${row + 1}p1`).classList.contains('gray')) &&
+      (!document.querySelector(`#col${col + 1}row${row - 1}p1`) ||
+        !document.querySelector(`#col${col + 1}row${row - 1}p1`).classList.contains('gray')) &&
+      (!document.querySelector(`#col${col + 1}row${row}p1`) ||
+        !document.querySelector(`#col${col + 1}row${row}p1`).classList.contains('gray'))
     ) {
-      console.log('1 ship');
+      console.log('1 ship found and validated with modified function');
       oneShips++;
     }
   }

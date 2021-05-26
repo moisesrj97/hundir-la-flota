@@ -1,11 +1,42 @@
 body {
-  background-image: url('https://i.pinimg.com/originals/b1/3b/dd/b13bdd058119af1ec0159b499560bcc3.jpg');
+  font-family: 'Chelsea Market';
+  background-image: url('https://images.pexels.com/photos/313563/sand-pattern-wave-texture-313563.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
   background-position: center;
-  background-size: fit;
+  background-size: cover;
+}
+
+h1,
+p,
+button {
+  text-align: center;
+}
+
+p {
+  background-color: rgba(255, 255, 255, 0.438);
+  margin-left: 25%;
+  margin-right: 25%;
+  padding: 1%;
 }
 
 span {
   font-size: 30px;
+}
+
+button {
+  background-color: black;
+  color: white;
+  padding: 15px;
+  border-radius: 25px;
+  border: 6px solid black;
+  font-size: 1.5rem;
+}
+
+button:hover {
+  background-color: rgba(255, 255, 255, 0);
+  color: black;
+  padding: 15px;
+  border-radius: 25px;
+  border: 6px solid black;
 }
 
 .container {
@@ -16,6 +47,10 @@ span {
 
 .grid {
   margin: 20px;
+  background-image: url('https://i.pinimg.com/originals/b1/3b/dd/b13bdd058119af1ec0159b499560bcc3.jpg');
+  background-position: center;
+  background-size: fit;
+  border: 5px solid rgb(95, 60, 14);
 }
 
 .row {
@@ -37,4 +72,12 @@ span {
 
 .gray {
   background-color: gray;
+}
+
+.touched {
+  color: black;
+}
+
+.water {
+  color: black;
 }

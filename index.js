@@ -234,10 +234,6 @@ let paintGrid = () => {
   }
 };
 
-//Tengo que generar 4 barcos de 1 casilla, 3 barcos de 2 casillas,
-//2 barcos de 3 casillas y uno de 4 casillas, horizontal o vertical,
-//que no se toquen
-
 let genShips = () => {
   for (casilla of grid) {
     casilla.element.classList.remove('red');
@@ -317,17 +313,14 @@ let genShips = () => {
     let toCheckIf1 = [c_1r1, c_1r0, c_1r_1, c1r1, c1r0, c1r_1, c0r_1, c0r1];
 
     if (length == 4) {
-      console.log(startingBox);
       if (orientation == 1) {
         startingBox.ship = true;
 
         if (c0r3) {
-          console.log(c0r1, c0r2, c0r3);
           c0r1.ship = true;
           c0r2.ship = true;
           c0r3.ship = true;
         } else {
-          console.log(c0r_1, c0r_2, c0r_3);
           c0r_1.ship = true;
           c0r_2.ship = true;
           c0r_3.ship = true;
@@ -336,12 +329,10 @@ let genShips = () => {
         startingBox.ship = true;
 
         if (c3r0) {
-          console.log(c1r0, c2r0, c3r0);
           c1r0.ship = true;
           c2r0.ship = true;
           c3r0.ship = true;
         } else {
-          console.log(c_1r0, c_2r0, c_3r0);
           c_1r0.ship = true;
           c_2r0.ship = true;
           c_3r0.ship = true;
@@ -349,7 +340,6 @@ let genShips = () => {
       }
     } else if (length == 3) {
       if ((orientation = 1)) {
-        console.log('Barco Vertical de 3');
         let v1 = 0;
         let v2 = 0;
         let v3 = 0;
@@ -372,34 +362,22 @@ let genShips = () => {
           }
         }
 
-        console.log(v1, v2, v3);
-
         if (startingBox.ship == false && v1 == 12) {
-          console.log('v1 vertical ship');
-
           for (casilla of vertical3v1) {
             casilla.ship = true;
-            console.log(casilla.element);
           }
         } else if (startingBox.ship == false && v2 == 12) {
-          console.log('v2 vertical ship');
-
           for (casilla of vertical3v2) {
             casilla.ship = true;
-            console.log(casilla.element);
           }
         } else if (startingBox.ship == false && v3 == 12) {
-          console.log('v3 vertical ship');
-
           for (casilla of vertical3v3) {
             casilla.ship = true;
-            console.log(casilla.element);
           }
         } else {
           genOneShip(3);
         }
       } else {
-        console.log('Barco Horizontal de 3');
         let v1 = 0;
         let v2 = 0;
         let v3 = 0;
@@ -422,27 +400,17 @@ let genShips = () => {
           }
         }
 
-        console.log(v1, v2, v3);
-
         if (startingBox.ship == false && v1 == 12) {
-          console.log('v1 horizontal ship');
           for (casilla of horizontal3v1) {
             casilla.ship = true;
-            console.log(casilla.element);
           }
         } else if (startingBox.ship == false && v2 == 12) {
-          console.log('v2 horizontal ship');
-
           for (casilla of horizontal3v2) {
             casilla.ship = true;
-            console.log(casilla.element);
           }
         } else if (startingBox.ship == false && v3 == 12) {
-          console.log('v3 horizontal ship');
-
           for (casilla of horizontal3v3) {
             casilla.ship = true;
-            console.log(casilla.element);
           }
         } else {
           genOneShip(3);
@@ -450,7 +418,6 @@ let genShips = () => {
       }
     } else if (length == 2) {
       if ((orientation = 1)) {
-        console.log('Barco Vertical de 2');
         let v1 = 0;
         let v2 = 0;
 
@@ -466,27 +433,18 @@ let genShips = () => {
           }
         }
 
-        console.log(v1, v2);
-
         if (startingBox.ship == false && v1 == 10) {
-          console.log('v1 vertical ship');
-
           for (casilla of vertical2v1) {
             casilla.ship = true;
-            console.log(casilla.element);
           }
         } else if (startingBox.ship == false && v2 == 10) {
-          console.log('v2 vertical ship');
-
           for (casilla of vertical2v2) {
             casilla.ship = true;
-            console.log(casilla.element);
           }
         } else {
           genOneShip(2);
         }
       } else {
-        console.log('Barco Horizontal de 2');
         let v1 = 0;
         let v2 = 0;
 
@@ -502,27 +460,19 @@ let genShips = () => {
           }
         }
 
-        console.log(v1, v2);
-
         if (startingBox.ship == false && v1 == 10) {
-          console.log('v1 horizontal ship');
           for (casilla of horizontal2v1) {
             casilla.ship = true;
-            console.log(casilla.element);
           }
         } else if (startingBox.ship == false && v2 == 10) {
-          console.log('v2 horizontal ship');
-
           for (casilla of horizontal2v2) {
             casilla.ship = true;
-            console.log(casilla.element);
           }
         } else {
           genOneShip(2);
         }
       }
     } else if (length == 1) {
-      console.log('Barco de 1');
       let free = 0;
       for (casilla of toCheckIf1) {
         if (!casilla) {
@@ -531,9 +481,7 @@ let genShips = () => {
           free++;
         }
       }
-      console.log(free);
       if (startingBox.ship == false && free == 8) {
-        console.log(startingBox.element);
         startingBox.ship = true;
       } else {
         genOneShip(1);
@@ -552,7 +500,7 @@ let genShips = () => {
   genOneShip(1);
   genOneShip(1);
 
-  alert('Enemy ships generated');
+  alert('Barcos enemigos generados');
 };
 
 let checkShips = () => {
@@ -579,8 +527,6 @@ let checkShips = () => {
       document.querySelector(`#col${col}row${row - 3}p1`) &&
       document.querySelector(`#col${col}row${row - 3}p1`).classList.contains('gray')
     ) {
-      console.log(casilla.element);
-      console.log('4 ship vertical found with modificated function');
       if (
         (!document.querySelector(`#col${col}row${row - 4}p1`) ||
           !document.querySelector(`#col${col}row${row - 4}p1`).classList.contains('gray')) &&
@@ -611,7 +557,6 @@ let checkShips = () => {
         (!document.querySelector(`#col${col}row${row + 1}p1`) ||
           !document.querySelector(`#col${col}row${row + 1}p1`).classList.contains('gray'))
       ) {
-        console.log('4 ship vertical validated with modificated funtion');
         vertical4ships++;
       }
     }
@@ -631,8 +576,6 @@ let checkShips = () => {
       document.querySelector(`#col${col - 3}row${row}p1`) &&
       document.querySelector(`#col${col - 3}row${row}p1`).classList.contains('gray')
     ) {
-      console.log(casilla.element);
-      console.log('4 ship horizontal found with modificated function');
       if (
         (!document.querySelector(`#col${col - 4}row${row}p1`) ||
           !document.querySelector(`#col${col - 4}row${row}p1`).classList.contains('gray')) &&
@@ -663,7 +606,6 @@ let checkShips = () => {
         (!document.querySelector(`#col${col + 1}row${row}p1`) ||
           !document.querySelector(`#col${col + 1}row${row}p1`).classList.contains('gray'))
       ) {
-        console.log('4 ship horizontal validated with modificated funtion');
         horizontal4ships++;
       }
     }
@@ -685,8 +627,6 @@ let checkShips = () => {
       (!document.querySelector(`#col${col}row${row + 1}p1`) ||
         !document.querySelector(`#col${col}row${row + 1}p1`).classList.contains('gray'))
     ) {
-      console.log(casilla.element);
-      console.log('3 ship vertical found with modificated function');
       if (
         (!document.querySelector(`#col${col}row${row - 3}p1`) ||
           !document.querySelector(`#col${col}row${row - 3}p1`).classList.contains('gray')) &&
@@ -713,7 +653,6 @@ let checkShips = () => {
         (!document.querySelector(`#col${col}row${row + 1}p1`) ||
           !document.querySelector(`#col${col}row${row + 1}p1`).classList.contains('gray'))
       ) {
-        console.log('3 ship vertical validated with modificated funtion');
         vertical3ships++;
       }
     }
@@ -734,8 +673,6 @@ let checkShips = () => {
       (!document.querySelector(`#col${col + 1}row${row}p1`) ||
         !document.querySelector(`#col${col + 1}row${row}p1`).classList.contains('gray'))
     ) {
-      console.log(casilla.element);
-      console.log('3 ship horizontal found with modificated function');
       if (
         (!document.querySelector(`#col${col - 3}row${row}p1`) ||
           !document.querySelector(`#col${col - 3}row${row}p1`).classList.contains('gray')) &&
@@ -762,7 +699,6 @@ let checkShips = () => {
         (!document.querySelector(`#col${col + 1}row${row}p1`) ||
           !document.querySelector(`#col${col + 1}row${row}p1`).classList.contains('gray'))
       ) {
-        console.log('3 ship horizontal validated with modificated funtion');
         horizontal3ships++;
       }
     }
@@ -781,8 +717,6 @@ let checkShips = () => {
       (!document.querySelector(`#col${col}row${row + 1}p1`) ||
         !document.querySelector(`#col${col}row${row + 1}p1`).classList.contains('gray'))
     ) {
-      console.log(casilla.element);
-      console.log('2 ship vertical found with modificated function');
       if (
         (!document.querySelector(`#col${col}row${row - 2}p1`) ||
           !document.querySelector(`#col${col}row${row - 2}p1`).classList.contains('gray')) &&
@@ -805,7 +739,6 @@ let checkShips = () => {
         (!document.querySelector(`#col${col}row${row + 1}p1`) ||
           !document.querySelector(`#col${col}row${row + 1}p1`).classList.contains('gray'))
       ) {
-        console.log('2 ship vertical validated with modificated funtion');
         vertical2ships++;
       }
     }
@@ -824,8 +757,6 @@ let checkShips = () => {
       (!document.querySelector(`#col${col + 1}row${row}p1`) ||
         !document.querySelector(`#col${col + 1}row${row}p1`).classList.contains('gray'))
     ) {
-      console.log(casilla.element);
-      console.log('2 ship horizontal found with modificated function');
       if (
         (!document.querySelector(`#col${col - 2}row${row}p1`) ||
           !document.querySelector(`#col${col - 2}row${row}p1`).classList.contains('gray')) &&
@@ -848,7 +779,6 @@ let checkShips = () => {
         (!document.querySelector(`#col${col + 1}row${row}p1`) ||
           !document.querySelector(`#col${col + 1}row${row}p1`).classList.contains('gray'))
       ) {
-        console.log('2 ship horizontal validated with modificated funtion');
         horizontal2ships++;
       }
     }
@@ -876,7 +806,6 @@ let checkShips = () => {
       (!document.querySelector(`#col${col + 1}row${row}p1`) ||
         !document.querySelector(`#col${col + 1}row${row}p1`).classList.contains('gray'))
     ) {
-      console.log('1 ship found and validated with modified function');
       oneShips++;
     }
   }
@@ -891,34 +820,304 @@ let checkShips = () => {
   console.log('1 ships:', oneShips);
 
   if (total4ships == 1 && total3ships == 2 && total2ships == 3 && oneShips == 4) {
-    alert('Valid positioning');
+    alert('Posiconamiento correcto');
+    return true;
   } else {
     alert(
-      'Invalid positioning, remember to put one 4-long ship, two 3-long ships, three 2-long ships and four 1-long ships, whitout touching each other'
+      'Posicionamiento incorrecto, recuerda colocar un barco de 4 casillas de largo, 2 de 3 casillas de largo, 3 de 2 casillas de largo y 4 de una casilla de largo'
     );
+    return false;
   }
 };
 
-for (casilla of gridP1) {
-  casilla.element.addEventListener('click', (e) => {
-    document.querySelector(`#${e.path[0].id}`).classList.toggle('gray');
-  });
-}
+let checkSink = (div) => {
+  //Deberia de hacer una vista en retrospectiva hacia los lados desde
+  //esa casilla para ver si encuentra una casilla con barco pero sin touched.
+  //Si no la encuentra, y se topa con agua por todas las direcciones, tocado y hundido,
+  //si no, sólo tocado, porque ahora mismo si empiezo en el centro canta tocado y hundido
+  //en cuanto llego a un extremo
 
-for (casilla of grid) {
-  casilla.element.addEventListener('click', (e) => {
-    let div = grid.find((x) => x.element == e.path[0]);
-    console.log(div);
-    if (div.ship == true) {
-      div.element.innerHTML = '<span>&#128293;</span>';
-      div.touched = true;
-      // alert('Tocado!');
-    } else {
-      div.element.innerHTML = '<span>&#128031;</span>';
-      // alert('Agua!');
+  console.log(div);
+  let col = div.col;
+  let row = div.row;
+  if (
+    (!findBox('cpu', col + 1, row) || !findBox('cpu', col + 1, row).ship || findBox('cpu', col + 1, row).touched) &&
+    (!findBox('cpu', col - 1, row) || !findBox('cpu', col - 1, row).ship || findBox('cpu', col - 1, row).touched) &&
+    (!findBox('cpu', col + 1, row + 1) ||
+      !findBox('cpu', col + 1, row + 1).ship ||
+      findBox('cpu', col + 1, row + 1).touched) &&
+    (!findBox('cpu', col - 1, row - 1) ||
+      !findBox('cpu', col - 1, row - 1).ship ||
+      findBox('cpu', col - 1, row - 1).touched) &&
+    (!findBox('cpu', col + 1, row - 1) ||
+      !findBox('cpu', col + 1, row - 1).ship ||
+      findBox('cpu', col + 1, row - 1).touched) &&
+    (!findBox('cpu', col - 1, row + 1) ||
+      !findBox('cpu', col - 1, row + 1).ship ||
+      findBox('cpu', col - 1, row + 1).touched) &&
+    (!findBox('cpu', col, row + 1) || !findBox('cpu', col, row + 1).ship || findBox('cpu', col, row + 1).touched) &&
+    (!findBox('cpu', col, row - 1) || !findBox('cpu', col, row - 1).ship || findBox('cpu', col, row - 1).touched)
+  ) {
+    for (let i = 1; i < 4; i++) {
+      console.log('der:', findBox('cpu', col + i, row));
+      if (findBox('cpu', col + i, row) && findBox('cpu', col + i, row).ship == true) {
+        if (!findBox('cpu', col + i, row).touched) {
+          return false;
+        }
+      } else {
+        break;
+      }
     }
-  });
-}
 
-document.querySelector('#checkShips').addEventListener('click', checkShips);
-document.querySelector('#genShips').addEventListener('click', genShips);
+    for (let i = -1; i > -4; i--) {
+      console.log('izq:', findBox('cpu', col + i, row));
+      if (findBox('cpu', col + i, row) && findBox('cpu', col + i, row).ship == true) {
+        if (!findBox('cpu', col + i, row).touched) {
+          return false;
+        }
+      } else {
+        console.log('Water');
+
+        break;
+      }
+    }
+
+    for (let i = 1; i < 4; i++) {
+      console.log('up:', findBox('cpu', col, row + i));
+      if (findBox('cpu', col, row + i) && findBox('cpu', col, row + i).ship == true) {
+        if (!findBox('cpu', col, row + i).touched) {
+          return false;
+        }
+      } else {
+        console.log('Water');
+
+        break;
+      }
+    }
+
+    for (let i = -1; i > -4; i--) {
+      console.log('down:', findBox('cpu', col, row + i));
+      if (findBox('cpu', col, row + i) && findBox('cpu', col, row + i).ship == true) {
+        if (!findBox('cpu', col, row + i).touched) {
+          return false;
+        }
+      } else {
+        console.log('Water');
+
+        break;
+      }
+    }
+
+    alert('... y hundido!');
+    return true;
+  }
+  return false;
+};
+
+let checkWin = () => {
+  let p1Ships = gridP1.filter((x) => x.element.classList.contains('gray'));
+  let cpuShips = grid.filter((x) => x.ship == true);
+
+  if (p1Ships.every((x) => x.element.classList.contains('touched'))) {
+    alert('¡Victoria de la CPU!');
+  } else if (cpuShips.every((x) => x.touched == true)) {
+    alert('¡Victoria del jugador!');
+  }
+};
+
+let movesBuffer = [];
+
+let cpuMove = () => {
+  let casilla;
+  let getCasillaRandom = () => {
+    let randomIndex = Math.floor(Math.random() * 100);
+    casilla = gridP1[randomIndex];
+    let col = casilla.col;
+    let row = casilla.row;
+    if (
+      casilla.element.classList.contains('touched') ||
+      casilla.element.classList.contains('water') ||
+      (findBox('p1', col + 1, row + 1) && findBox('p1', col + 1, row + 1).element.classList.contains('touched')) ||
+      (findBox('p1', col - 1, row + 1) && findBox('p1', col - 1, row + 1).element.classList.contains('touched')) ||
+      (findBox('p1', col - 1, row - 1) && findBox('p1', col - 1, row - 1).element.classList.contains('touched')) ||
+      (findBox('p1', col + 1, row - 1) && findBox('p1', col + 1, row - 1).element.classList.contains('touched')) ||
+      (findBox('p1', col - 1, row) && findBox('p1', col - 1, row).element.classList.contains('touched')) ||
+      (findBox('p1', col + 1, row) && findBox('p1', col + 1, row).element.classList.contains('touched')) ||
+      (findBox('p1', col, row - 1) && findBox('p1', col, row - 1).element.classList.contains('touched')) ||
+      (findBox('p1', col, row + 1) && findBox('p1', col, row + 1).element.classList.contains('touched'))
+    ) {
+      getCasillaRandom();
+    }
+  };
+
+  if (movesBuffer.length < 1) {
+    getCasillaRandom();
+  } else {
+    casilla = movesBuffer[0];
+    movesBuffer.shift();
+  }
+
+  if (casilla.element.classList.contains('gray')) {
+    casilla.element.innerHTML = '<span>&#128293;</span>';
+    casilla.element.classList.add('touched');
+
+    let col = casilla.col;
+    let row = casilla.row;
+
+    let casillasToPush = [];
+
+    if (
+      findBox('p1', col + 1, row) &&
+      !findBox('p1', col + 1, row).element.classList.contains('touched') &&
+      !findBox('p1', col + 1, row).element.classList.contains('water')
+    ) {
+      casillasToPush.push(findBox('p1', col + 1, row));
+    }
+
+    if (
+      findBox('p1', col - 1, row) &&
+      !findBox('p1', col - 1, row).element.classList.contains('touched') &&
+      !findBox('p1', col - 1, row).element.classList.contains('water')
+    ) {
+      casillasToPush.push(findBox('p1', col - 1, row));
+    }
+
+    if (
+      findBox('p1', col, row + 1) &&
+      !findBox('p1', col, row + 1).element.classList.contains('touched') &&
+      !findBox('p1', col, row + 1).element.classList.contains('water')
+    ) {
+      casillasToPush.push(findBox('p1', col, row + 1));
+    }
+
+    if (
+      findBox('p1', col, row - 1) &&
+      !findBox('p1', col, row - 1).element.classList.contains('touched') &&
+      !findBox('p1', col, row - 1).element.classList.contains('water')
+    ) {
+      casillasToPush.push(findBox('p1', col, row - 1));
+    }
+
+    if (
+      (!findBox('p1', col + 1, row) ||
+        !findBox('p1', col + 1, row).element.classList.contains('gray') ||
+        findBox('p1', col + 1, row).element.classList.contains('touched')) &&
+      (!findBox('p1', col - 1, row) ||
+        !findBox('p1', col - 1, row).element.classList.contains('gray') ||
+        findBox('p1', col - 1, row).element.classList.contains('touched')) &&
+      (!findBox('p1', col, row + 1) ||
+        !findBox('p1', col, row + 1).element.classList.contains('gray') ||
+        findBox('p1', col, row + 1).element.classList.contains('touched')) &&
+      (!findBox('p1', col, row - 1) ||
+        !findBox('p1', col, row - 1).element.classList.contains('gray') ||
+        findBox('p1', col, row - 1).element.classList.contains('touched'))
+    ) {
+      for (let i = 1; i < 4; i++) {
+        console.log('der:', findBox('p1', col + i, row));
+        if (findBox('p1', col + i, row) && findBox('p1', col + i, row).element.classList.contains('gray')) {
+          if (!findBox('p1', col + i, row).element.classList.contains('touched')) {
+            return false;
+          }
+        } else {
+          break;
+        }
+      }
+
+      for (let i = -1; i > -4; i--) {
+        console.log('izq:', findBox('p1', col + i, row));
+        if (findBox('p1', col + i, row) && findBox('p1', col + i, row).element.classList.contains('gray')) {
+          if (!findBox('p1', col + i, row).element.classList.contains('touched')) {
+            return false;
+          }
+        } else {
+          break;
+        }
+      }
+
+      for (let i = 1; i < 4; i++) {
+        console.log('up:', findBox('p1', col, row + i));
+        if (findBox('p1', col, row + i) && findBox('p1', col, row + i).element.classList.contains('gray')) {
+          if (!findBox('p1', col, row + i).element.classList.contains('touched')) {
+            return false;
+          }
+        } else {
+          break;
+        }
+      }
+
+      for (let i = -1; i > -4; i--) {
+        console.log('down:', findBox('p1', col, row + i));
+        if (findBox('p1', col, row + i) && findBox('p1', col, row + i).element.classList.contains('gray')) {
+          if (!findBox('p1', col, row + i).element.classList.contains('touched')) {
+            return false;
+          }
+        } else {
+          break;
+        }
+      }
+      movesBuffer = [];
+      checkWin();
+      return alert('Tocado y hundido');
+      //TENGO QUE HACER COMO HICE CON EL P1 PARA QUE NO DETECTE TOCADO Y HUNDIDO AL LLEGAR A UN BORDE DE UN BARCO
+    }
+
+    movesBuffer.unshift(...casillasToPush);
+    console.log(
+      'CPU buffer',
+      movesBuffer.map((x) => x.element)
+    );
+    checkWin();
+  } else {
+    casilla.element.innerHTML = '<span>&#128031;</span>';
+    casilla.element.classList.add('water');
+  }
+};
+
+let toggleAtack = () => {
+  for (casilla of grid) {
+    casilla.element.addEventListener('click', (e) => {
+      let div = grid.find((x) => x.element == e.path[0]);
+      if (div.ship == true) {
+        div.element.innerHTML = '<span>&#128293;</span>';
+        div.touched = true;
+        alert('Tocado...');
+        checkSink(div);
+        checkWin();
+        cpuMove();
+      } else {
+        div.element.innerHTML = '<span>&#128031;</span>';
+        alert('Agua!');
+        cpuMove();
+      }
+    });
+  }
+};
+
+let paint = (e) => {
+  document.querySelector(`#${e.path[0].id}`).classList.toggle('gray');
+};
+
+let togglePaint = (param) => {
+  for (casilla of gridP1) {
+    if (param == 'on') {
+      casilla.element.addEventListener('click', paint, true);
+    } else if (param == 'off') {
+      casilla.element.removeEventListener('click', paint, true);
+    }
+  }
+};
+
+togglePaint('on');
+
+let battleShip = () => {
+  document.querySelector('#start').style.display = 'none';
+  if (checkShips()) {
+    genShips();
+    toggleAtack();
+    togglePaint('off');
+  } else {
+    document.querySelector('#start').style.display = 'block';
+  }
+};
+
+document.querySelector('#start').addEventListener('click', battleShip);
